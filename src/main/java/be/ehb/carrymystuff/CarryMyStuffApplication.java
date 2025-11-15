@@ -8,6 +8,5 @@ public class CarryMyStuffApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CarryMyStuffApplication.class, args);
-    }
-
+    }       // main
 }
