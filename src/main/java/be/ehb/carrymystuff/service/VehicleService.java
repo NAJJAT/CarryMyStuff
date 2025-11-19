@@ -38,6 +38,7 @@ public class VehicleService {
         v.setActive(active);
         return vehicleRepository.save(v);
     }
+
     public List<Vehicle> searchByCity(String city) {
         return vehicleRepository.findByCityAndActiveTrue(city);
     }
