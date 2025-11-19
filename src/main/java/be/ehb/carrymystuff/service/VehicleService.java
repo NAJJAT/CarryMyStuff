@@ -31,14 +31,14 @@ public class VehicleService {
         return vehicleRepository.findByHelperId(helper.getId());
     }
 
-    public List<Vehicle> searchByCity(String city) {
-        return vehicleRepository.findByCityAndActiveTrue(city);
-    }
 
     public Vehicle activateVehicle(Long id, boolean active) {
         Vehicle v = vehicleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vehicle not found"));
         v.setActive(active);
         return vehicleRepository.save(v);
+    }
+    public List<Vehicle> searchByCity(String city) {
+        return vehicleRepository.findByCityAndActiveTrue(city);
     }
 }

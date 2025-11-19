@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:8080';
+const API_BASE = 'http://localhost:8081';
 
 document.getElementById('loginBtn').addEventListener('click', async () => {
     const email = document.getElementById('email').value.trim();

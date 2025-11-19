@@ -31,7 +31,6 @@ public class UserController {
     public List<Vehicle> searchVehicles(@RequestParam("city") String city) {
         return vehicleService.searchByCity(city);
     }
-
     @Data
     public static class CreateBookingRequest {
         private Long vehicleId;
