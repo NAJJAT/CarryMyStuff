@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Helper Dashboard - Mover</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="page">
+    <header>
+        <h1>Helper Dashboard</h1>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <section class="card">
+        <h2>Add vehicle</h2>
+        <input id="type" placeholder="Type (van, car...)">
+        <input id="description" placeholder="Description">
+        <input id="capacity" type="number" placeholder="Capacity kg">
+        <input id="city" placeholder="City">
+        <input id="license" placeholder="License plate">
+        <button id="addVehicleBtn">Add Vehicle</button>
+    </section>
+
+    <section class="card">
+        <h2>My vehicles</h2>
+        <div id="vehiclesList"></div>
+    </section>
+
+    <section class="card">
+        <h2>Bookings for me</h2>
+        <div id="bookingsList"></div>
+    </section>
+</div>
+
+<script src="js/helper.js"></script>
+</body>
+</html>
