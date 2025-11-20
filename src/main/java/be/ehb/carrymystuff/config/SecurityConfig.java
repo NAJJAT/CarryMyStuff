@@ -21,7 +21,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -50,7 +49,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-
 
     // CORS for frontend JS/HTML
     @Bean
