@@ -69,4 +69,27 @@ public class BookingService {
         booking.setStatus(status);
         return bookingRepository.save(booking);
     }
+    public Booking createBookingByAdmin(Long customerId, Long vehicleId,
+                                        String fromAddress, String toAddress,
+                                        LocalDateTime moveDate) {
+
+        User customer = userRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        Vehicle vehicle = vehicleRepository.findById(vehicleId)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
+
+        Booking booking = new Booking();
+        booking.setCustomer(customer);
+        booking.setVehicle(vehicle);
+        booking.setHelper(vehicle.getHelper());
+        booking.setFromAddress(fromAddress);
+        booking.setToAddress(toAddress);
+        booking.setMoveDate(moveDate);
+        booking.setStatus("PENDING");
+
+        return bookingRepository.save(booking);
+    }
+
+
 }
