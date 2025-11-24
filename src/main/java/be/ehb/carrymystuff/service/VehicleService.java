@@ -30,8 +30,9 @@ public class VehicleService {
                 .orElseThrow(() -> new RuntimeException("Helper not found"));
         return vehicleRepository.findByHelperId(helper.getId());
     }
-
-
+    public List<Vehicle> getAllVehicles() {
+        return vehicleRepository.findAll();
+    }
     public Vehicle activateVehicle(Long id, boolean active) {
         Vehicle v = vehicleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vehicle not found"));
@@ -39,7 +40,18 @@ public class VehicleService {
         return vehicleRepository.save(v);
     }
 
+    // 🔍 Search by city (only active, case-insensitive)
     public List<Vehicle> searchByCity(String city) {
-        return vehicleRepository.findByCityAndActiveTrue(city);
+        return vehicleRepository.findByCityIgnoreCaseAndActiveTrue(city);
+    }
+
+    // 🔍 Search by city + type (only active, case-insensitive)
+    public List<Vehicle> searchByCityAndType(String city, String type) {
+        return vehicleRepository.findByCityIgnoreCaseAndTypeIgnoreCaseAndActiveTrue(city, type);
+    }
+
+    // 🔍 Get ALL active vehicles
+    public List<Vehicle> getAllActive() {
+        return vehicleRepository.findByActiveTrue();
     }
 }
