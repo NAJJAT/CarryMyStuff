@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login – CarryMyStuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff</div>
+                <div class="logo-subtitle">Move smart. Share vehicles.</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="card">
+            <h1>Welcome</h1>
+            <p class="text-muted">
+                Please log in or register as a user or helper to access your dashboard.
+            </p>
+
+            <p>
+                <span class="text-muted">No account?</span>
+                <span class="link" id="link-register">Go to register →</span>
+            </p>
+
+            <div class="divider"></div>
+
+            <h2>Login</h2>
+
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" placeholder="••••••••">
+            </div>
+
+            <button id="btn-login" class="btn btn-primary">Log in</button>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <span class="text-muted small">CarryMyStuff demo UI</span>
+    </footer>
+</div>
+
+<div id="toast" class="toast">
+    <div id="toast-title" class="toast-title"></div>
+    <div id="toast-message" class="toast-message"></div>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

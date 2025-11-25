@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CarryMyStuff – Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-container">
+
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff</div>
+                <div class="logo-subtitle">Move smart. Share vehicles.</div>
+            </div>
+        </div>
+
+        <nav>
+            <span class="link" onclick="window.location.href='login.html'">Login</span>
+            &nbsp;|&nbsp;
+            <span class="link" onclick="window.location.href='register.html'">Register</span>
+        </nav>
+    </header>
+
+    <main class="main-layout">
+        <!-- LEFT: HERO / INTRO -->
+        <section class="card">
+            <h1>Welcome to CarryMyStuff</h1>
+            <p class="text-muted">
+                A simple platform that connects people who need to move stuff
+                with helpers who have vehicles.
+            </p>
+
+            <div class="divider"></div>
+
+            <h2 class="section-title">What can you do?</h2>
+            <ul class="text-muted">
+                <li><strong>Users</strong> can find active vehicles and book a time slot.</li>
+                <li><strong>Helpers</strong> can see all bookings made with their vehicles.</li>
+                <li><strong>Admins</strong> can manage all bookings in the system.</li>
+            </ul>
+
+            <div class="btn-row">
+                <button class="btn btn-primary" onclick="window.location.href='login.html'">
+                    Log in
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='register.html'">
+                    Register
+                </button>
+            </div>
+        </section>
+
+        <!-- RIGHT: CONTACT / INFO -->
+        <section class="card">
+            <h2>Contact & info</h2>
+            <p class="text-muted">
+                This is a demo site for a moving / transport booking application.
+            </p>
+
+            <div class="divider"></div>
+
+            <h3 class="section-title">Contact us</h3>
+            <p class="text-muted small">
+                Email: support@carrymystuff.com<br>
+                Phone: +32 4 70 00 00 00<br>
+                Address: Brussels, Belgium
+            </p>
+
+            <div class="divider"></div>
+
+            <h3 class="section-title">How it works</h3>
+            <ol class="text-muted small">
+                <li>Register as <strong>USER</strong> or <strong>HELPER</strong>.</li>
+                <li>Log in with your account.</li>
+                <li>
+                    As a <strong>USER</strong>: see active vehicles and create bookings.<br>
+                    As a <strong>HELPER</strong>: see the bookings where you are the helper.
+                </li>
+                <li>Admin accounts are created manually.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <span class="text-muted small">© CarryMyStuff – demo project</span>
+    </footer>
+</div>
+
+<div id="toast" class="toast">
+    <div class="toast-title" id="toast-title"></div>
+    <div class="toast-message" id="toast-message"></div>
+</div>
+</body>
+</html>

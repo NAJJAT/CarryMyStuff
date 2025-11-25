@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Helper Dashboard – CarryMyStuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff – Helper</div>
+                <div class="logo-subtitle">See who booked you.</div>
+            </div>
+        </div>
+        <div class="auth-info">
+            <div id="auth-badge" class="auth-badge auth-badge--logged-out">
+                <span class="auth-status-dot"></span>
+                <span id="auth-status-text">Not logged in</span>
+            </div>
+            <div id="auth-email" class="auth-email"></div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="card">
+            <h2>Your appointments</h2>
+            <p class="text-muted">
+                These are the bookings where you are the helper (driver).
+            </p>
+            <div class="card-header-inline">
+                <h3 class="section-title">Bookings</h3>
+                <button id="btn-refresh-helper-bookings" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+            <div id="helper-bookings-list" class="list"></div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <button id="btn-logout" class="btn btn-text">Log out</button>
+    </footer>
+</div>
+
+<div id="toast" class="toast">
+    <div id="toast-title" class="toast-title"></div>
+    <div id="toast-message" class="toast-message"></div>
+</div>
+
+<script src="js/helper-dashboard.js"></script>
+</body>
+</html>

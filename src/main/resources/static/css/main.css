@@ -29,10 +29,14 @@ body {
 }
 
 .app-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px 16px 40px;
 }
+
+/* ============================================
+   HEADER
+   ============================================ */
 
 .app-header {
     display: flex;
@@ -111,17 +115,25 @@ body {
     color: var(--text-muted);
 }
 
+/* ============================================
+   LAYOUT
+   ============================================ */
+
 .main-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+    grid-template-columns: 1fr;
     gap: 16px;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 1024px) {
     .main-layout {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     }
 }
+
+/* ============================================
+   CARDS
+   ============================================ */
 
 .card {
     background: radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 55%),
@@ -147,6 +159,10 @@ body {
     font-size: 12px;
 }
 
+/* ============================================
+   FORMS
+   ============================================ */
+
 .form-group {
     margin-bottom: 10px;
     display: flex;
@@ -157,6 +173,11 @@ body {
 .form-group label {
     font-size: 12px;
     color: var(--text-muted);
+}
+
+.small-group {
+    flex: 1;
+    min-width: 150px;
 }
 
 input,
@@ -175,6 +196,32 @@ select:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 1px rgba(59,130,246,0.7);
 }
+
+input[readonly] {
+    background: rgba(15,23,42,0.6);
+    cursor: not-allowed;
+}
+
+/* ============================================
+   FILTERS ROW
+   ============================================ */
+
+.filters-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.filters-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
 
 .btn {
     border-radius: 999px;
@@ -238,6 +285,28 @@ select:focus {
     margin: 6px 0 10px;
 }
 
+/* ============================================
+   BADGES
+   ============================================ */
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.badge-muted {
+    background: rgba(156, 163, 175, 0.2);
+    color: var(--text-muted);
+    border: 1px solid #4b5563;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
 .section-title {
     font-size: 15px;
     margin: 0 0 6px;
@@ -254,9 +323,13 @@ select:focus {
     align-items: center;
 }
 
+/* ============================================
+   BOOKINGS LIST
+   ============================================ */
+
 .list {
     margin-top: 6px;
-    max-height: 320px;
+    max-height: 400px;
     overflow-y: auto;
     padding-right: 3px;
 }
@@ -264,15 +337,31 @@ select:focus {
 .list-item {
     border-radius: 12px;
     border: 1px solid #374151;
-    padding: 8px 10px;
-    margin-bottom: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
     background: rgba(15,23,42,0.95);
     font-size: 12px;
+}
+
+.list-item-main {
+    margin-bottom: 6px;
 }
 
 .list-item-title {
     font-weight: 600;
     font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.list-item-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.list-item-extra {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
 }
 
 .list-item-meta {
@@ -287,6 +376,10 @@ select:focus {
     flex-wrap: wrap;
     gap: 4px;
 }
+
+/* ============================================
+   TAGS
+   ============================================ */
 
 .tag {
     border-radius: 999px;
@@ -306,6 +399,134 @@ select:focus {
 .tag-status-canceled { border-color: #ef4444; color: #ef4444; }
 .tag-status-done { border-color: #38bdf8; color: #38bdf8; }
 
+/* ============================================
+   VEHICLE CARDS GRID LAYOUT (DARK THEME)
+   ============================================ */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.vehicle-card {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--text);
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.vehicle-card-selected {
+    border: 2px solid var(--accent);
+    background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 70%),
+    rgba(15, 23, 42, 0.98);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+}
+
+.vehicle-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #374151;
+}
+
+.vehicle-type {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text);
+}
+
+.vehicle-city {
+    color: var(--text-muted);
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.vehicle-id {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.vehicle-card-body {
+    flex: 1;
+    margin-bottom: 12px;
+}
+
+.vehicle-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.vehicle-line .label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.vehicle-description {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #374151;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    min-height: 40px;
+}
+
+.vehicle-card-footer {
+    margin-top: auto;
+}
+
+.btn-choose-vehicle {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Responsive adjustments for vehicle cards */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1201px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
 .app-footer {
     margin-top: 18px;
     text-align: right;
@@ -318,6 +539,10 @@ select:focus {
     text-decoration: underline;
     font-size: 13px;
 }
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
 
 .toast {
     position: fixed;
@@ -350,6 +575,11 @@ select:focus {
 .toast-message {
     color: var(--text-muted);
 }
+
+/* ============================================
+   TABLE (if needed)
+   ============================================ */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -381,4 +611,24 @@ select:focus {
     font-size: 11px;
 }
 
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
 
+.list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+    background: rgba(15,23,42,0.5);
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
