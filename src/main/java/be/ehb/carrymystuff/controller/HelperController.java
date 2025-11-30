@@ -1,6 +1,11 @@
 package be.ehb.carrymystuff.controller;
 
+import be.ehb.carrymystuff.DTO.AddVehicleRequest;
+import be.ehb.carrymystuff.DTO.UpdateVehicleRequest;
+import be.ehb.carrymystuff.Repository.UserRepository;
+import be.ehb.carrymystuff.Repository.VehicleRepository;
 import be.ehb.carrymystuff.models.Booking;
+import be.ehb.carrymystuff.models.User;
 import be.ehb.carrymystuff.models.Vehicle;
 import be.ehb.carrymystuff.service.BookingService;
 import be.ehb.carrymystuff.service.VehicleService;
@@ -23,19 +28,19 @@ public class HelperController {
 
     private final VehicleService vehicleService;
     private final BookingService bookingService;
+    private final UserRepository userRepository;
+    private final VehicleRepository vehicleRepository;
 
-    @Data
-    public static class AddVehicleRequest {
-        @NotBlank private String type;
-        @NotBlank private String description;
-        private Integer capacityKg;
-        @NotBlank private String city;
-        @NotBlank private String licensePlate;
-    }
 
+
+
+
+
+    // 2) Helper adds a new vehicle
     @PostMapping("/vehicles")
     public Vehicle addVehicle(@AuthenticationPrincipal UserDetails principal,
                               @RequestBody AddVehicleRequest req) {
+
         Vehicle v = Vehicle.builder()
                 .type(req.getType())
                 .description(req.getDescription())
@@ -47,13 +52,39 @@ public class HelperController {
         return vehicleService.addVehicleForHelper(principal.getUsername(), v);
     }
 
-    @GetMapping("/vehicles")
-    public List<Vehicle> myVehicles(@AuthenticationPrincipal UserDetails principal) {
-        return vehicleService.getVehiclesForHelper(principal.getUsername());
+
+
+    // -------------------------
+    // 3) Helper sees their vehicles
+    // -------------------------
+        @GetMapping("/vehicles")
+        public List<Vehicle> myVehicles(@AuthenticationPrincipal UserDetails principal) {
+            return vehicleService.getVehiclesForHelper(principal.getUsername());
     }
+    // helper update één van zijn voertuigen
+    @PatchMapping("/vehicles/{id}")
+    public Vehicle updateMyVehicle(
+            @PathVariable Long id,
+            @AuthenticationPrincipal UserDetails principal,
+            @RequestBody UpdateVehicleRequest req) {
+
+        return vehicleService.updateHelperVehicle(
+                principal.getUsername(),
+                id,
+                req
+        );
+    }
+
+    // -------------------------
+    // 4) Helper updates OWN vehicle
+    // -------------------------
+
+
+
 
     @GetMapping("/bookings")
     public List<Booking> myBookings(@AuthenticationPrincipal UserDetails principal) {
         return bookingService.getBookingsForHelper(principal.getUsername());
     }
+
 }

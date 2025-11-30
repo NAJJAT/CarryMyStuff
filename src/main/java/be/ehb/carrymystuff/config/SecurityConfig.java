@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/auth/login",
                                 "/api/auth/register"
+
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -58,7 +59,7 @@ public class SecurityConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "http://localhost:5500",   // VSCode Live Server
+                                "http://localhost:5500",
                                 "http://127.0.0.1:5500"
                         )
                         .allowedMethods("*")

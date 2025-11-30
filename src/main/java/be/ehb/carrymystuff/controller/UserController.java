@@ -72,4 +72,6 @@ public class UserController {
     public List<Booking> myBookings(@AuthenticationPrincipal UserDetails principal) {
         return bookingService.getBookingsForCustomer(principal.getUsername());
     }
+
+
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AdminUserService {
+public class AdminUserService  {
 
     private final UserRepository userRepository;
 
