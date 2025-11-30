@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "users")
 @Data  // from Lombok: generates getters/setters, toString, etc.
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

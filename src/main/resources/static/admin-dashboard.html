@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard – CarryMyStuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff – Admin</div>
+                <div class="logo-subtitle">Manage users, vehicles and bookings.</div>
+            </div>
+        </div>
+        <div class="auth-info">
+            <div id="auth-badge" class="auth-badge auth-badge--logged-out">
+                <span class="auth-status-dot"></span>
+                <span id="auth-status-text">Not logged in</span>
+            </div>
+            <div id="auth-email" class="auth-email"></div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+
+        <!-- BOOKINGS -->
+        <section class="card">
+            <h2>Bookings</h2>
+            <p class="text-muted">
+                View and update the status of all bookings in the system.
+            </p>
+            <div class="card-header-inline">
+                <h3 class="section-title">All bookings</h3>
+                <button id="btn-refresh-admin-bookings" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+
+            <div class="list">
+                <table class="table" id="table-bookings">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Helper</th>
+                        <th>Vehicle</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Save</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- rows via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- VEHICLES -->
+        <section class="card">
+            <h2>Vehicles</h2>
+            <p class="text-muted">
+                View and toggle active status of all vehicles.
+            </p>
+            <div class="card-header-inline">
+                <h3 class="section-title">All vehicles</h3>
+                <button id="btn-refresh-admin-vehicles" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+
+            <div class="list">
+                <table class="table" id="table-vehicles">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Helper</th>
+                        <th>Type</th>
+                        <th>City</th>
+                        <th>Capacity</th>
+                        <th>Plate</th>
+                        <th>Active</th>
+                        <th>Save</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- rows via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- USERS -->
+        <section class="card">
+            <h2>Users</h2>
+            <p class="text-muted">
+                View all users and change their roles.
+            </p>
+            <div class="card-header-inline">
+                <h3 class="section-title">All users</h3>
+                <button id="btn-refresh-admin-users" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+
+            <div class="list">
+                <table class="table" id="table-users">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>City</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Save</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- rows via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <button id="btn-logout" class="btn btn-text">Log out</button>
+    </footer>
+</div>
+
+<div id="toast" class="toast">
+    <div id="toast-title" class="toast-title"></div>
+    <div id="toast-message" class="toast-message"></div>
+</div>
+
+<script src="js/admin-dashboard.js"></script>
+</body>
+</html>

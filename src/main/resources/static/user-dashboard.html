@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard – CarryMyStuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Disable caching for development -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link rel="stylesheet" href="css/main.css?v=2">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff – User</div>
+                <div class="logo-subtitle">Book vehicles for your move.</div>
+            </div>
+        </div>
+        <div class="auth-info">
+            <div id="auth-badge" class="auth-badge auth-badge--logged-out">
+                <span class="auth-status-dot"></span>
+                <span id="auth-status-text">Not logged in</span>
+            </div>
+            <div id="auth-email" class="auth-email"></div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+
+        <!-- VEHICLES SECTION -->
+        <section class="card">
+            <h2>Active vehicles</h2>
+            <p class="text-muted">
+                Filter by city (and type), then click on a vehicle card to select it and create a booking.
+            </p>
+
+            <!-- FILTERS -->
+            <div class="filters-row">
+                <div class="form-group small-group">
+                    <label for="filter-city">City</label>
+                    <input id="filter-city" type="text" placeholder="e.g. Brussels">
+                </div>
+
+                <div class="form-group small-group">
+                    <label for="filter-type">Type</label>
+                    <select id="filter-type">
+                        <option value="ANY">Any</option>
+                        <option value="CAR">Car</option>
+                        <option value="VAN">Van</option>
+                        <option value="TRUCK">Truck</option>
+                    </select>
+                </div>
+
+                <div class="filters-buttons">
+                    <button id="btn-search-vehicles" class="btn btn-primary btn-small">Search</button>
+                    <button id="btn-load-vehicles" class="btn btn-secondary btn-small">Show all</button>
+                </div>
+            </div>
+
+            <div id="vehicles-list" class="cards-grid">
+                <!-- vehicle cards injected by JS -->
+            </div>
+        </section>
+
+        <!-- BOOKINGS SECTION -->
+        <section class="card">
+            <h2>Bookings</h2>
+            <p class="text-muted">
+                First select a vehicle above, then choose your time slot and addresses.
+            </p>
+
+            <div class="divider"></div>
+
+            <h3 class="section-title">Create booking</h3>
+
+            <p class="small text-muted">
+                Selected vehicle:
+                <span id="selected-vehicle-label" class="badge badge-muted">
+                    None selected
+                </span>
+            </p>
+
+            <div class="form-group">
+                <label for="booking-vehicle-id">Vehicle ID</label>
+                <input id="booking-vehicle-id" type="number" placeholder="Select a vehicle above" readonly>
+            </div>
+            <div class="form-group">
+                <label for="booking-from">From address</label>
+                <input id="booking-from" type="text" placeholder="Brussels, Street A 10">
+            </div>
+            <div class="form-group">
+                <label for="booking-to">To address</label>
+                <input id="booking-to" type="text" placeholder="Antwerp, Street B 5">
+            </div>
+            <div class="form-group">
+                <label for="booking-date">Move date & time (time slot)</label>
+                <input id="booking-date" type="datetime-local">
+            </div>
+            <button id="btn-create-booking" class="btn btn-primary">Create booking</button>
+
+            <div class="divider"></div>
+            <div class="card-header-inline">
+                <h3 class="section-title">My bookings</h3>
+                <button id="btn-refresh-bookings" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+            <div id="bookings-list" class="list"></div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <button id="btn-logout" class="btn btn-text">Log out</button>
+    </footer>
+</div>
+
+<div id="toast" class="toast">
+    <div id="toast-title" class="toast-title"></div>
+    <div id="toast-message" class="toast-message"></div>
+</div>
+
+<script src="js/user-dashboard.js?v=2"></script>
+</body>
+</html>

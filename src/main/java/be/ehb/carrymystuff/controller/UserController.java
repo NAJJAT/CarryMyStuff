@@ -26,10 +26,22 @@ public class UserController {
     private final VehicleService vehicleService;
     private final BookingService bookingService;
 
-    // Search helpers/vehicles by city
+    // 🔍 Search vehicles by city (required) and optional type
     @GetMapping("/vehicles")
-    public List<Vehicle> searchVehicles(@RequestParam("city") String city) {
+    public List<Vehicle> searchVehicles(
+            @RequestParam("city") String city,
+            @RequestParam(required = false) String type
+    ) {
+        if (type != null) {
+            return vehicleService.searchByCityAndType(city, type);
+        }
         return vehicleService.searchByCity(city);
+    }
+
+    // 🔍 Get ALL active vehicles (no filters)
+    @GetMapping("/vehicles/all")
+    public List<Vehicle> getAllActiveVehicles() {
+        return vehicleService.getAllActive();
     }
 
     @Data
@@ -60,4 +72,6 @@ public class UserController {
     public List<Booking> myBookings(@AuthenticationPrincipal UserDetails principal) {
         return bookingService.getBookingsForCustomer(principal.getUsername());
     }
+
+
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register – CarryMyStuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff</div>
+                <div class="logo-subtitle">Move smart. Share vehicles.</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="card">
+            <h1>Register</h1>
+            <p class="text-muted">
+                Create an account as a <strong>user</strong> (customer) or a <strong>helper</strong> (driver with vehicle).
+            </p>
+
+            <p>
+                <span class="text-muted">Already have an account?</span>
+                <span class="link" id="link-login">Back to login →</span>
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="form-group">
+                <label for="reg-name">Name</label>
+                <input id="reg-name" type="text" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input id="reg-email" type="email" placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input id="reg-password" type="password" placeholder="Password (min 6 chars)">
+            </div>
+
+            <div class="form-group">
+                <label for="reg-phone">Phone number</label>
+                <input id="reg-phone" type="text" placeholder="+32 4 70 ...">
+            </div>
+
+            <div class="form-group">
+                <label for="reg-city">City</label>
+                <input id="reg-city" type="text" placeholder="Brussels">
+            </div>
+
+            <div class="form-group">
+                <label>Register as</label>
+                <select id="reg-role">
+                    <option value="USER">User (customer)</option>
+                    <option value="HELPER">Helper (driver)</option>
+                </select>
+            </div>
+
+            <button id="btn-register" class="btn btn-primary">Register</button>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <span class="text-muted small">CarryMyStuff demo UI</span>
+    </footer>
+</div>
+
+<div id="toast" class="toast">
+    <div id="toast-title" class="toast-title"></div>
+    <div id="toast-message" class="toast-message"></div>
+</div>
+
+<script src="js/register.js"></script>
+</body>
+</html>

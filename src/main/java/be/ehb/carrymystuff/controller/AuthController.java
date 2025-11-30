@@ -11,6 +11,7 @@ import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -36,14 +37,28 @@ public class AuthController {
         return ResponseEntity.ok(new AuthResponse(token));
     }
 
+
+
     @GetMapping("/me")
     public ResponseEntity<MeResponse> me(@AuthenticationPrincipal UserDetails principal) {
-        User user = userRepository.findByEmail(principal.getUsername()).orElseThrow();
-        return ResponseEntity.ok(new MeResponse(
+        if (principal == null) {
+            // no authenticated user → 401 Unauthorized
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = principal.getUsername();
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        MeResponse dto = new MeResponse(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
                 user.getRole()
-        ));
+        );
+
+        return ResponseEntity.ok(dto);
     }
+
 }

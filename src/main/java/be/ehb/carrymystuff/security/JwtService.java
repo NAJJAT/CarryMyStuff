@@ -33,7 +33,7 @@ public class JwtService {
                 .signWith(key)
                 .compact();
     }
-
+    /// Extract username (subject) from JWT token
     public String extractUsername(String token) {
         return Jwts.parser()
                 .verifyWith((SecretKey) key)

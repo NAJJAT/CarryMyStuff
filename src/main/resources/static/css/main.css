@@ -1,0 +1,714 @@
+:root {
+    --bg: #020617;
+    --bg-card: #020617;
+    --border: #1f2937;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --radius: 16px;
+    --shadow: 0 18px 40px rgba(0,0,0,0.7);
+    --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+    background: radial-gradient(circle at top, #0f172a, #020617 55%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3b82f6, #22c55e);
+    box-shadow: 0 14px 30px rgba(37,99,235,0.7);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.logo-title {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.logo-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.auth-info {
+    text-align: right;
+    font-size: 13px;
+}
+
+.auth-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(15,23,42,0.9);
+}
+
+.auth-badge--logged-in {
+    border-color: rgba(34,197,94,0.7);
+}
+
+.auth-badge--logged-out {
+    border-color: rgba(248,113,113,0.6);
+}
+
+.auth-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--danger);
+}
+
+.auth-badge--logged-in .auth-status-dot {
+    background: var(--success);
+}
+
+.auth-email {
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 1024px) {
+    .main-layout {
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    }
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+    background: radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(16,185,129,0.12), transparent 55%),
+    var(--bg-card);
+    border-radius: var(--radius);
+    padding: 16px 18px 18px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.card h1,
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.small {
+    font-size: 12px;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+.form-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.small-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+input,
+select {
+    border-radius: 10px;
+    border: 1px solid #374151;
+    background: rgba(15,23,42,0.95);
+    color: var(--text);
+    padding: 7px 10px;
+    font-size: 13px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(59,130,246,0.7);
+}
+
+input[readonly] {
+    background: rgba(15,23,42,0.6);
+    cursor: not-allowed;
+}
+
+/* ============================================
+   FILTERS ROW
+   ============================================ */
+
+.filters-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.filters-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    border-radius: 999px;
+    border: none;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, opacity 0.12s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: #f9fafb;
+    box-shadow: 0 12px 28px rgba(37,99,235,0.8);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 34px rgba(37,99,235,0.9);
+}
+
+.btn-secondary {
+    background: rgba(15,23,42,0.95);
+    border: 1px solid #4b5563;
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15,23,42,0.9);
+}
+
+.btn-small {
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+.btn-text {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 4px 8px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.btn-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 6px 0 10px;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.badge-muted {
+    background: rgba(156, 163, 175, 0.2);
+    color: var(--text-muted);
+    border: 1px solid #4b5563;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
+.section-title {
+    font-size: 15px;
+    margin: 0 0 6px;
+}
+
+.divider {
+    border-top: 1px dashed #374151;
+    margin: 12px 0 8px;
+}
+
+.card-header-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============================================
+   BOOKINGS LIST
+   ============================================ */
+
+.list {
+    margin-top: 6px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 3px;
+}
+
+.list-item {
+    border-radius: 12px;
+    border: 1px solid #374151;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: rgba(15,23,42,0.95);
+    font-size: 12px;
+}
+
+.list-item-main {
+    margin-bottom: 6px;
+}
+
+.list-item-title {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.list-item-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.list-item-extra {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.list-item-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.list-item-tags {
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* ============================================
+   TAGS
+   ============================================ */
+
+.tag {
+    border-radius: 999px;
+    border: 1px solid #4b5563;
+    padding: 2px 7px;
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.tag-strong {
+    color: var(--text);
+    border-color: #6b7280;
+}
+
+.tag-status-pending { border-color: #eab308; color: #eab308; }
+.tag-status-accepted { border-color: #22c55e; color: #22c55e; }
+.tag-status-canceled { border-color: #ef4444; color: #ef4444; }
+.tag-status-done { border-color: #38bdf8; color: #38bdf8; }
+
+/* ============================================
+   VEHICLE CARDS GRID LAYOUT (DARK THEME)
+   ============================================ */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.vehicle-card {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--text);
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.vehicle-card-selected {
+    border: 2px solid var(--accent);
+    background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 70%),
+    rgba(15, 23, 42, 0.98);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+}
+
+.vehicle-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #374151;
+}
+
+.vehicle-type {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text);
+}
+
+.vehicle-city {
+    color: var(--text-muted);
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.vehicle-id {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.vehicle-card-body {
+    flex: 1;
+    margin-bottom: 12px;
+}
+
+.vehicle-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.vehicle-line .label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.vehicle-description {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #374151;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    min-height: 40px;
+}
+
+.vehicle-card-footer {
+    margin-top: auto;
+}
+
+.btn-choose-vehicle {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Responsive adjustments for vehicle cards */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1201px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.app-footer {
+    margin-top: 18px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.link {
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+
+.toast {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background: rgba(15,23,42,0.98);
+    border-radius: 14px;
+    padding: 10px 12px;
+    border: 1px solid #4b5563;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+    font-size: 12px;
+    max-width: 280px;
+    display: none;
+    z-index: 1000;
+}
+
+.toast-success {
+    border-color: rgba(34,197,94,0.8);
+}
+
+.toast-error {
+    border-color: rgba(248,113,113,0.9);
+}
+
+.toast-title {
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.toast-message {
+    color: var(--text-muted);
+}
+
+/* ============================================
+   TABLE (if needed)
+   ============================================ */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.table th,
+.table td {
+    border-bottom: 1px solid #374151;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.table th {
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(15,23,42,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table select,
+.table input[type="checkbox"] {
+    font-size: 11px;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+.list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+    background: rgba(15,23,42,0.5);
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* === TABLES === */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.table thead {
+    background: #f5f5f7;
+}
+
+.table th,
+.table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #e1e1e6;
+    text-align: left;
+    vertical-align: top;
+}
+
+.table th {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Status tags reused from your list styling */
+.tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+/* Active/Inactive colors – adjust to match your design */
+.tag-status-accepted {
+    background-color: #e1f8e7;
+    color: #1c7c3b;
+}
+
+.tag-status-canceled {
+    background-color: #fde0e6;
+    color: #b00020;
+}
+
+/* === TOAST === */
+.toast {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    min-width: 260px;
+    max-width: 360px;
+    padding: 0.85rem 1rem;
+    border-radius: 0.5rem;
+    background: #333;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9999;
+    font-size: 0.9rem;
+}
+
+.toast-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.toast-message {
+    opacity: 0.9;
+    font-size: 0.85rem;
+}
+
+/* Toast variations */
+.toast-success {
+    background: #1e8e3e;
+}
+
+.toast-error {
+    background: #c5221f;
+}

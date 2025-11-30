@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Helper Dashboard – CarryMyStuff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Optional: reduce caching on HTML -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="logo">
+            <div class="logo-icon">CM</div>
+            <div>
+                <div class="logo-title">CarryMyStuff – Helper</div>
+                <div class="logo-subtitle">Manage your bookings &amp; vehicles.</div>
+            </div>
+        </div>
+        <div class="auth-info">
+            <div id="auth-badge" class="auth-badge auth-badge--logged-out">
+                <span class="auth-status-dot"></span>
+                <span id="auth-status-text">Not logged in</span>
+            </div>
+            <div id="auth-email" class="auth-email"></div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <!-- BOOKINGS SECTION -->
+        <section class="card">
+            <h2>Your appointments</h2>
+            <p class="text-muted">
+                These are the bookings where you are the helper (driver).
+            </p>
+            <div class="card-header-inline">
+                <h3 class="section-title">Bookings</h3>
+                <button id="btn-refresh-helper-bookings" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+            <div id="helper-bookings-list" class="list"></div>
+        </section>
+
+        <!-- VEHICLES SECTION -->
+        <section class="card">
+            <h2>Your vehicles</h2>
+            <p class="text-muted">
+                Add and manage the vehicles you use for moves.
+            </p>
+
+            <div class="card-header-inline">
+                <h3 class="section-title">Vehicles</h3>
+                <button id="btn-refresh-helper-vehicles" class="btn btn-secondary btn-small">Refresh</button>
+            </div>
+
+            <!-- Vehicles table will be rendered here -->
+            <div id="helper-vehicles-list" class="list"></div>
+
+            <hr class="divider">
+
+            <h3 class="section-title">Add a vehicle</h3>
+            <form id="vehicle-form" class="form-grid">
+                <div class="form-group">
+                    <label for="vehicle-active">Active</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="vehicle-active" checked>
+                        Vehicle is active
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicle-capacity">Capacity (kg)</label>
+                    <input type="number" id="vehicle-capacity" min="1" step="1" required placeholder="e.g. 600">
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicle-city">City</label>
+                    <input type="text" id="vehicle-city" required placeholder="e.g. Aarschot">
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicle-description">Description</label>
+                    <textarea id="vehicle-description" rows="2" required
+                              placeholder="Strong truck, mid-size van, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicle-license-plate">License plate</label>
+                    <input type="text" id="vehicle-license-plate" required placeholder="e.g. 1-AAsssA-123">
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicle-type">Type</label>
+                    <select id="vehicle-type" required>
+                        <option value="">-- Choose type --</option>
+                        <option value="PICKUP">Pickup truck</option>
+                        <option value="VAN">Van</option>
+                        <option value="BOX_TRUCK">Box truck</option>
+                        <option value="SMALL_VAN">Small van</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save vehicle</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <button id="btn-logout" class="btn btn-text">Log out</button>
+    </footer>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast">
+    <div id="toast-title" class="toast-title"></div>
+    <div id="toast-message" class="toast-message"></div>
+</div>
+
+<!-- Cache-busting version to avoid old JS being used -->
+<script src="js/helper-dashboard.js?v=2"></script>
+</body>
+</html>

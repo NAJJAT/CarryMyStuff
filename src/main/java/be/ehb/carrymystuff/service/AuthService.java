@@ -38,8 +38,10 @@ public class AuthService {
 
     public String login(LoginRequest request) {
         Authentication auth = new UsernamePasswordAuthenticationToken(
-                request.getEmail(), request.getPassword());
-        authenticationManager.authenticate(auth);
+                request.getEmail(), request.getPassword()
+        );
+        authenticationManager.authenticate(auth);  // ⬅️ if this fails, no token
         return jwtService.generateToken(request.getEmail());
     }
+
 }
