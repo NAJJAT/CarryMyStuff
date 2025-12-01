@@ -417,15 +417,7 @@ CREATE TABLE booking (
 
 ## 🔧 Recent Improvements
 
-### 1. Vehicle Search Fix
-Updated `VehicleRepository` to use case-insensitive `LIKE` query for cities with spaces.
-
-```java
-@Query("SELECT v FROM Vehicle v WHERE LOWER(v.city) LIKE LOWER(CONCAT('%', :city, '%'))")
-List<Vehicle> findByCityAndActiveTrue(@Param("city") String city);
-```
-
-### 2. Browser Caching Fix
+### 1. Browser Caching Fix
 Added cache-busting parameters and meta tags.
 
 ```html
@@ -433,7 +425,7 @@ Added cache-busting parameters and meta tags.
 <script src="js/user-dashboard.js?v=2"></script>
 ```
 
-### 3. Authentication Enhancement
+### 2. Authentication Enhancement
 Login now returns both token and role for proper routing.
 
 ```json
@@ -443,14 +435,7 @@ Login now returns both token and role for proper routing.
 }
 ```
 
-### 4. Dark Theme UI
-Modern dark theme with:
-- Blue/purple gradients
-- Card-based layouts
-- Responsive grid
-- Toast notifications
 
----
 
 ## 🧪 Testing
 
@@ -487,42 +472,12 @@ Authorization: Bearer {token}
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
----
-
-## 📝 License
-
-MIT License - see LICENSE file for details
-
----
-
 ## 👨‍💻 Author
 
 **NAJJAT**
 - GitHub: [@NAJJAT](https://github.com/NAJJAT)
 - Repository: [CarryMyStuff](https://github.com/NAJJAT/CarryMyStuff)
 
----
 
-## 🗺️ Roadmap
-
-- [ ] Email notifications
-- [ ] Payment integration
-- [ ] Real-time chat
-- [ ] Rating system
-- [ ] Photo uploads
-- [ ] Mobile app
-- [ ] Multi-language support
-
----
-
-**⭐ If you find this project helpful, please give it a star on GitHub! ⭐**
 
 *Built with ❤️ by NAJJAT - Making moving easier for everyone!* 🚚✨
